@@ -1,7 +1,6 @@
 package core;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.BeforeTest;
 
 public class TestBase {
@@ -10,6 +9,6 @@ public class TestBase {
     public void configure() {
         Configuration.timeout = 10000;
         Configuration.baseUrl = "http://the-internet.herokuapp.com/";
-        Configuration.browser = WebDriverRunner.FIREFOX;
+        //Configuration.browser = WebDriverRunner.INTERNET_EXPLORER;
     }
 }
