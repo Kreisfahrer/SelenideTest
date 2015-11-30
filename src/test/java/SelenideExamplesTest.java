@@ -1,5 +1,6 @@
 import com.codeborne.selenide.testng.BrowserPerClass;
 import core.TestBase;
+import helpers.ScreenShooter;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.*;
 
-@Listeners(BrowserPerClass.class)
+@Listeners({BrowserPerClass.class, ScreenShooter.class})
 public class SelenideExamplesTest extends TestBase {
     private FactoryHomePage homePage;
     private FactoryRegistrationPage registrationPage;
