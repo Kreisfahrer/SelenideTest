@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Selenide.page;
 
@@ -19,6 +20,7 @@ public class FactoryRegistrationPage {
     @FindBy(id = "flash")
     public SelenideElement flash;
 
+    @Step("Logging in with user: \"{0}\", password: \"{1}\"")
     public FactoryHomePage login(String user, String pass) {
         userName.val(user);
         password.val(pass);

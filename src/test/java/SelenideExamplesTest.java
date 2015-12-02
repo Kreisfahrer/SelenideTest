@@ -8,6 +8,8 @@ import pages.FactoryHomePage;
 import pages.FactoryRegistrationPage;
 import pages.StaticHomePage;
 import pages.StaticRegistrationPage;
+import ru.yandex.qatools.allure.annotations.Issue;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -23,6 +25,8 @@ public class SelenideExamplesTest extends TestBase {
         registrationPage = open("login", FactoryRegistrationPage.class);
     }
 
+    @Issue("Some-issue-id-2435")
+    @TestCaseId("test-1")
     @Test
     public void simpleLoginTest() {
         $("#username").val("tomsmith");
@@ -31,12 +35,14 @@ public class SelenideExamplesTest extends TestBase {
         $("#flash").should(appear, cssClass("fail"), text("You logged into a secure area!"));
     }
 
+    @TestCaseId("test-2")
     @Test
     public void staticPageLoginTest() {
         StaticRegistrationPage.login("tomsmith", "SuperSecretPassword!");
         $(StaticHomePage.FLASH).should(appear, cssClass("success"), text("You logged into a secure area!"));
     }
 
+    @TestCaseId("test-3")
     @Test
     public void staticPageLogoutTest() {
         StaticRegistrationPage.login("tomsmith", "SuperSecretPassword!");
@@ -44,12 +50,14 @@ public class SelenideExamplesTest extends TestBase {
         $(StaticRegistrationPage.FLASH).should(appear, cssClass("success"), text("You logged out of the secure area!"));
     }
 
+    @TestCaseId("test-4")
     @Test
     public void factoryPageLoginTest() {
         homePage = registrationPage.login("tomsmith", "SuperSecretPassword!");
         homePage.flash.should(appear, cssClass("success"), text("You logged into a secure area!"));
     }
 
+    @TestCaseId("test-5")
     @Test
     public void factoryPageLogoutTest() {
         homePage = registrationPage.login("tomsmith", "SuperSecretPassword!");
