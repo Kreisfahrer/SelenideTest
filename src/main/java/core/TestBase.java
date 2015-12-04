@@ -2,11 +2,7 @@ package core;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
