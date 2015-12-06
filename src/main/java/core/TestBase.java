@@ -1,6 +1,7 @@
 package core;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
@@ -19,8 +20,8 @@ public class TestBase {
     public void configure() {
         Configuration.timeout = 10000;
         Configuration.baseUrl = System.getProperty("baseUrl", DEFAULT_URL);
+        //Configuration.browser = WebDriverRunner.HTMLUNIT;
         getEnvironmentProperties();
-        //Configuration.browser = WebDriverRunner.INTERNET_EXPLORER;
     }
 
     @AfterTest

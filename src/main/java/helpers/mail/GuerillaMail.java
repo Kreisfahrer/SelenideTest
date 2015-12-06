@@ -156,7 +156,7 @@ public class GuerillaMail {
 
             for(int i = 0; i < jSonArray.length(); i++){
                 if(!emails.contains(jSonArray.getJSONObject(i))){
-                    emails.add(new Email(jSonArray));
+                    emails.add(new Email(jSonArray.getJSONObject(i)));
                 }
             }
 
@@ -193,7 +193,7 @@ public class GuerillaMail {
 
             for(int i = 0; i < jSonArray.length(); i++){
                 if(!emails.contains(jSonArray.getJSONObject(i))){
-                    emails.add(new Email(jSonArray));
+                    emails.add(new Email(jSonArray.getJSONObject(i)));
                 }
             }
 
@@ -365,7 +365,7 @@ public class GuerillaMail {
     /**
      * Return the position where the email is in the emails store.
      * @param emailId the id of the email
-     * @return the position in the ArrayList<EMail>
+     * @return the position in the ArrayList<Email>
      * @throws Exception
      */
     private int emailPosition(int emailId) throws Exception{

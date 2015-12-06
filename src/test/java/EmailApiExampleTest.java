@@ -17,6 +17,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class EmailApiExampleTest extends TestBase {
     GuerillaMail mailer;
+    int mailId;
 
     @BeforeMethod
     public void setup() throws Exception {
@@ -36,8 +37,11 @@ public class EmailApiExampleTest extends TestBase {
             public Boolean apply(WebDriver driver) {
                 boolean result = false;
                 try {
-                    if (mailer.checkEmail().size() > 1) {
-                        result = true;
+                    for (Email mail : mailer.checkEmail()) {
+                        if (mail.getSubject().equals("Forgot Password from the-internet")) {
+                            result = true;
+                            mailId = mail.getId();
+                        }
                     }
                 } catch (Exception e) {
 
@@ -45,8 +49,8 @@ public class EmailApiExampleTest extends TestBase {
                 return result;
             }
         });
-        List<Email> mails = mailer.checkEmail();
-        String subject = mailer.checkEmail().get(0).getSubject();
-        Assert.assertTrue(subject.contains("Forgot Password from the-internet"), subject);
+        Email fetched = mailer.fetchEmail(mailId);
+        Assert.assertTrue(fetched.getSubject().contains("Forgot Password from the-internet"));
+        String body = fetched.getBody();
     }
 }
