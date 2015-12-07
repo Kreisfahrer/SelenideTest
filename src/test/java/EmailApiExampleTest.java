@@ -30,6 +30,7 @@ public class EmailApiExampleTest extends TestBase {
         $("#form_submit").click();
     }
 
+    // Added some comments
     @Test
     public void forgetPasswordTest() throws Exception {
         Wait().until(new ExpectedCondition<Boolean>() {
