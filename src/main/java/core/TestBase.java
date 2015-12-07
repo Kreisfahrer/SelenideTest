@@ -17,7 +17,7 @@ public class TestBase {
     protected Properties environment;
 
     @BeforeTest
-    public void configure() {
+    public void configure() throws Exception {
         Configuration.timeout = 10000;
         Configuration.baseUrl = System.getProperty("baseUrl", DEFAULT_URL);
         //Configuration.browser = WebDriverRunner.HTMLUNIT;
