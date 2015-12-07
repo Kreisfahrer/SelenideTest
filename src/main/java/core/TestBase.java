@@ -13,8 +13,8 @@ import java.util.Properties;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 public class TestBase {
-    private final static String DEFAULT_URL = "http://the-internet.herokuapp.com/";
-    private Properties environment;
+    protected final static String DEFAULT_URL = "http://the-internet.herokuapp.com/";
+    protected Properties environment;
 
     @BeforeTest
     public void configure() {
@@ -29,7 +29,7 @@ public class TestBase {
         saveEnvironment();
     }
 
-    private void getEnvironmentProperties() {
+    protected void getEnvironmentProperties() {
         environment = new Properties();
         if(!isHtmlUnit()) {
             Capabilities caps = ((RemoteWebDriver) getWebDriver()).getCapabilities();
@@ -46,7 +46,7 @@ public class TestBase {
         }
     }
 
-    private void saveEnvironment() {
+    protected void saveEnvironment() {
         File resultsFolder = new File("./target/allure-results");
         if (!resultsFolder.exists()) {
             resultsFolder.mkdirs();
