@@ -10,12 +10,13 @@ import pages.StaticHomePage;
 import pages.StaticRegistrationPage;
 import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
+import com.codeborne.selenide.testng.TextReport;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.*;
 
-@Listeners({BrowserPerClass.class, ScreenShooter.class})
+@Listeners(TextReport.class)
 public class SelenideExamplesTest extends TestBase {
     private FactoryHomePage homePage;
     private FactoryRegistrationPage registrationPage;
@@ -31,6 +32,7 @@ public class SelenideExamplesTest extends TestBase {
     public void simpleLoginTest() {
         $("#username").val("tomsmith");
         $("#password").val("SuperSecretPassword!");
+        $("#password").shouldHave(exactValue("SuperSecret"));
         $("button[type='submit']").click();
         $("#flash").should(appear, cssClass("fail"), text("You logged into a secure area!"));
     }
