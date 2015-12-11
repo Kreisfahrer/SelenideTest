@@ -23,24 +23,25 @@ public class BrokenImageBMPTest extends BmpTestBase {
     @BeforeMethod
     public void setup() {
         bmp = getServer();
-        bmp.newHar("broken-image");
         open("broken_images");
     }
 
     @Test
     public void brokenImageTest() {
         List<String> links = getUrls($$(".example>img"), "src");
-        Map<String, String> responseCode = new HashMap<>();
-        Har har = bmp.getHar();
+        Map<String, String> brokenImage = new HashMap<>();
         for(String link : links) {
+            bmp.newHar("broken-image");
+            open(link);
+            Har har = bmp.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
                 if (entry.getRequest().getUrl().equals(link)) {
                     if (entry.getResponse().getStatus() >= 400) {
-                        responseCode.put(link, String.valueOf(entry.getResponse().getStatus()));
+                        brokenImage.put(link, String.valueOf(entry.getResponse().getStatus()));
                     }
                 }
             }
         }
-        Assert.assertEquals(responseCode.size(), 0, mapToString(responseCode));
+        Assert.assertEquals(brokenImage.size(), 0, mapToString(brokenImage));
     }
 }
