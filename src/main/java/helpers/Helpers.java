@@ -28,7 +28,7 @@ public class Helpers {
     public static String mapToString(Map<String, String> map) {
         StringBuilder message = new StringBuilder();
         for(String key : map.keySet()) {
-            message.append(String.format("url: %s, response code: %s\n", key, map.get(key)));
+            message.append(String.format("\nurl: %s, response code: %s", key, map.get(key)));
         }
         return message.toString();
     }

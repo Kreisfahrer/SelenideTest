@@ -35,11 +35,11 @@ public class BrokenImageBMPTest extends BmpTestBase {
             open(link);
             Har har = bmp.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
-                if (entry.getRequest().getUrl().equals(link)) {
+//                if (entry.getRequest().getUrl().equals(link)) {
                     if (entry.getResponse().getStatus() >= 400) {
                         brokenImage.put(link, String.valueOf(entry.getResponse().getStatus()));
                     }
-                }
+//                }
             }
         }
         Assert.assertEquals(brokenImage.size(), 0, mapToString(brokenImage));
