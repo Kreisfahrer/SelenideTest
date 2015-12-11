@@ -1,12 +1,13 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.testng.SoftAsserts;
 import core.TestBase;
-import helpers.ScreenShooter;
+import helpers.listeners.CustomErrorsCollector;
+import helpers.listeners.CustomSoftAsserts;
+import helpers.listeners.ScreenShooter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.FactoryRegistrationPage;
 import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
 
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * Created by Admin on 09.12.2015.
  */
-@Listeners({ScreenShooter.class, SoftAsserts.class})
+@Listeners({ScreenShooter.class, CustomSoftAsserts.class})
 public class SoftAssertExample extends TestBase {
 
     @BeforeMethod
