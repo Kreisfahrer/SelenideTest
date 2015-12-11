@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeTest;
 import static org.openqa.selenium.net.PortProber.findFreePort;
 
 public class BmpTestBase extends TestBase{
-    private static ProxyServer server;
+    private ProxyServer server;
 
     @Override
     @BeforeTest
@@ -43,7 +43,7 @@ public class BmpTestBase extends TestBase{
     }
 
 
-    public static ProxyServer getServer() {
+    public ProxyServer getServer() {
         return server;
     }
 }

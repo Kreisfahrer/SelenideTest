@@ -1,5 +1,6 @@
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.core.har.HarEntry;
+import net.lightbody.bmp.proxy.ProxyServer;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,9 +14,11 @@ import static helpers.Helpers.getUrls;
 import static helpers.Helpers.mapToString;
 
 public class BrokenImageBMPTest extends BmpTestBase {
+    private ProxyServer bmp;
 
     @BeforeMethod
     public void setup() {
+        bmp = getServer();
         open("broken_images");
     }
 
@@ -24,9 +27,9 @@ public class BrokenImageBMPTest extends BmpTestBase {
         List<String> links = getUrls($$(".example>img"), "src");
         Map<String, String> brokenImage = new HashMap<>();
         for(String link : links) {
-            getServer().newHar("broken-image");
+            bmp.newHar("broken-image");
             open(link);
-            Har har = getServer().getHar();
+            Har har = bmp.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
                 if (entry.getRequest().getUrl().equals(link)) {
                     if (entry.getResponse().getStatus() >= 400) {
