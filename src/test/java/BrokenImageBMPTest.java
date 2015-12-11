@@ -1,5 +1,6 @@
 import net.lightbody.bmp.proxy.ProxyServer;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.FactoryRegistrationPage;
 import pages.StaticBrokenImagePage;
 
@@ -18,5 +19,9 @@ public class BrokenImageBMPTest {
         open(staticBrokenImagePage.getPathLinkUrl());
     }
 
+    @Test
+    public void brokenImageTest() {
+        staticBrokenImagePage.imagesLoadedTest();
+    }
 
 }

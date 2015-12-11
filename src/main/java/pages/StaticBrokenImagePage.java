@@ -10,7 +10,6 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.$$;
 import static helpers.Helpers.getUrls;
 import static helpers.Locators.get;
-import static helpers.Locators.getLocatorString;
 
 public class StaticBrokenImagePage {
     private final static By URLS_IMG = get("brokenImage.urlsImg");
