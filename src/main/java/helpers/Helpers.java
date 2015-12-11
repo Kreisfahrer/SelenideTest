@@ -10,6 +10,7 @@ import java.nio.file.Path;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Helpers {
     public static List<String> readAllLines(Path resourcePath) throws IOException {
@@ -18,11 +19,17 @@ public class Helpers {
 
     public static List<String> getUrls(ElementsCollection elements, String attribute) {
         List<String> urls = new ArrayList<>();
-        for (SelenideElement image : elements) {
-            urls.add(image.attr(attribute));
+        for (SelenideElement url : elements) {
+            urls.add(url.attr(attribute));
         }
         return urls;
     }
 
-
+    public static String mapToString(Map<String, String> map) {
+        StringBuilder message = new StringBuilder();
+        for(String key : map.keySet()) {
+            message.append(String.format("url: %s, response code: %s\n", key, map.get(key)));
+        }
+        return message.toString();
+    }
 }
