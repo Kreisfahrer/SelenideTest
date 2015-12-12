@@ -43,7 +43,7 @@ public class BmpTestBase extends TestBase{
     }
 
 
-    public ProxyServer getServer() {
+    private ProxyServer getServer() {
         return server;
     }
 }
