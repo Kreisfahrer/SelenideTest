@@ -11,6 +11,7 @@ import static org.openqa.selenium.net.PortProber.findFreePort;
 
 public class BmpTestBase extends TestBase{
     private ProxyServer server;
+
     @Override
     @BeforeTest
     public void configure() {
@@ -25,7 +26,6 @@ public class BmpTestBase extends TestBase{
             e.printStackTrace();
         }
         //Configuration.browser = WebDriverRunner.HTMLUNIT;
-
         getEnvironmentProperties();
     }
     @AfterTest
@@ -41,4 +41,7 @@ public class BmpTestBase extends TestBase{
         saveEnvironment();
     }
 
+    protected ProxyServer getServer() {
+        return server;
+    }
 }
