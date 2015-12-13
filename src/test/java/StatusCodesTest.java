@@ -1,17 +1,17 @@
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import core.BmpTestBase;
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.core.har.HarEntry;
-import net.lightbody.bmp.proxy.ProxyServer;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.StatusCodesPage;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
-import static helpers.Helpers.getUrls;
+import static com.codeborne.selenide.Selenide.*;
 
 public class StatusCodesTest extends BmpTestBase{
 
@@ -22,20 +22,26 @@ public class StatusCodesTest extends BmpTestBase{
     }
 
     @Test
-    public void responseCodeTest(){
-        List<String> links = getUrls($$(".example>ul>li>a"), "href");
+    public void responseCodePageTest() {
+        int countLinks = $$(StatusCodesPage.CODE_PAGE_LINKS).size();
         Map<String, String> responseCode = new HashMap<>();
-        for (String link : links) {
+        for (int i = 0; i < countLinks; i++) {
             server.newHar("the-internet");
-            open(link);
+            $(getElement(StatusCodesPage.CODE_PAGE_LINKS, i)).click();
             Har har = server.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
                 if (entry.getResponse().getStatus() >= 400){
-                    responseCode.put(link, String.valueOf(entry.getResponse().getStatus()));
+                    responseCode.put(entry.getRequest().getUrl(), String.valueOf(entry.getResponse().getStatus()));
                 }
             }
+            back();
         }
         Assert.assertEquals(responseCode.size(), 0, mapToString(responseCode));
+    }
+
+    private SelenideElement getElement(By codePageLinks, int i) {
+        ElementsCollection links = $$(codePageLinks);
+        return links.get(i);
     }
 
     private String mapToString(Map<String, String> map) {
@@ -43,6 +49,7 @@ public class StatusCodesTest extends BmpTestBase{
         for(String key : map.keySet()) {
             message.append(String.format("\nurl: %s, response code: %s", key, map.get(key)));
         }
+        message.append("\n");
         return message.toString();
     }
 
