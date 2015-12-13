@@ -15,11 +15,8 @@ import static helpers.Helpers.getUrls;
 
 public class StatusCodesTest extends BmpTestBase{
 
-    private ProxyServer bmp;
-
     @BeforeMethod
     public void setup(){
-        bmp = getServer();
         open("status_codes");
 
     }
@@ -29,9 +26,9 @@ public class StatusCodesTest extends BmpTestBase{
         List<String> links = getUrls($$(".example>ul>li>a"), "href");
         Map<String, String> responseCode = new HashMap<>();
         for (String link : links) {
-            bmp.newHar("the-internet");
+            server.newHar("the-internet");
             open(link);
-            Har har = bmp.getHar();
+            Har har = server.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
                 if (entry.getResponse().getStatus() >= 400){
                     responseCode.put(link, String.valueOf(entry.getResponse().getStatus()));
