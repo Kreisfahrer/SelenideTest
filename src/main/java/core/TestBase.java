@@ -1,16 +1,19 @@
 package core;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Properties;
 
-import static com.codeborne.selenide.WebDriverRunner.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.isHtmlUnit;
 
 public class TestBase {
     protected final static String DEFAULT_URL = "http://the-internet.herokuapp.com/";
@@ -31,7 +34,7 @@ public class TestBase {
 
     protected void getEnvironmentProperties() {
         environment = new Properties();
-        if(!isHtmlUnit()) {
+        if (!isHtmlUnit()) {
             Capabilities caps = ((RemoteWebDriver) getWebDriver()).getCapabilities();
             environment.put("browser", caps.getBrowserName());
             environment.put("browser.version", caps.getVersion());
@@ -51,7 +54,7 @@ public class TestBase {
         if (!resultsFolder.exists()) {
             resultsFolder.mkdirs();
         }
-        try (OutputStream out = new FileOutputStream("./target/allure-results/environment.properties")){
+        try (OutputStream out = new FileOutputStream("./target/allure-results/environment.properties")) {
             environment.store(out, "Allure environment properties");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

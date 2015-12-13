@@ -1,6 +1,6 @@
-tomsmith,SuperSecretPassword!
-wrongLogin,SuperSecretPassword!
-tomsmith,wrongPass
- ,SuperSecretPassword!
-tomsmith, ,
- , ,
+tomsmith,SuperSecretPassword!,NILL
+wrongLogin,SuperSecretPassword!,Your username is invalid!
+tomsmith,wrongPass,Your password is invalid!
+NILL,SuperSecretPassword!,Your username is invalid!
+tomsmith,NILL,Your password is invalid!
+NILL,NILL,Your username is invalid!

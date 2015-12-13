@@ -9,15 +9,11 @@ import java.util.Properties;
 public class Locators {
     private final static Properties LOCATORS;
 
-    private enum LocatorType {
-        id, name, css, xpath, tag
-    }
-
     static {
         LOCATORS = new Properties();
-        try(InputStream in = Locators.class.getResourceAsStream("/locators.properties")) {
+        try (InputStream in = Locators.class.getResourceAsStream("/locators.properties")) {
             LOCATORS.load(in);
-        } catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -58,5 +54,9 @@ public class Locators {
                 throw new UnsupportedOperationException("Unsupported locator type used: "
                         + locatorType);
         }
+    }
+
+    private enum LocatorType {
+        id, name, css, xpath, tag
     }
 }

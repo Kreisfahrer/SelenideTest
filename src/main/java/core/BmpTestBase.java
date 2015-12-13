@@ -6,11 +6,11 @@ import net.lightbody.bmp.proxy.ProxyServer;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-
 import static org.openqa.selenium.net.PortProber.findFreePort;
 
-public class BmpTestBase extends TestBase{
+public class BmpTestBase extends TestBase {
     private ProxyServer server;
+
     @Override
     @BeforeTest
     public void configure() {
@@ -28,8 +28,9 @@ public class BmpTestBase extends TestBase{
 
         getEnvironmentProperties();
     }
+
     @AfterTest
-       public void proxyShutDown() throws Exception {
+    public void proxyShutDown() throws Exception {
         if (server != null) {
             server.stop();
         }

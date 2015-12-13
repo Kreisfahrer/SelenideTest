@@ -5,8 +5,8 @@ import org.json.JSONObject;
 
 /**
  * Representation of an email. This contains the message, the forwarder and the remaining information in an email.
- * @author <a reef="https://github.com/DavidePastore">DavidePastore</a>
  *
+ * @author <a reef="https://github.com/DavidePastore">DavidePastore</a>
  */
 public class Email {
 
@@ -27,10 +27,11 @@ public class Email {
 
     /**
      * Constructor of the Email.
+     *
      * @param jSonObject the JSONObject from which to create the Email object.
      * @throws JSONException
      */
-    public Email(JSONObject jSonObject) throws JSONException{
+    public Email(JSONObject jSonObject) throws JSONException {
         //System.out.println("jsonobject: "+jSonObject);
         if (jSonObject.has("mail_recipient")) {
             recipient = jSonObject.getString("mail_recipient");
@@ -59,134 +60,149 @@ public class Email {
         id = jSonObject.getInt("mail_id");
     }
 
-    /**
-     * Return the String representation of this email.
-     * @return the String representation of this email.
-     */
-    public String toString(){
-        return String.format("ID:%d\nFrom: <%s>\nSubject: %s\nDate: %s\nRead: %s\nBody: %s\n", id, sender, subject, date, read, body);
+    public static boolean fromIntToBoolean(int num) {
+        return num != 0;
     }
 
 
 	/* GET METHODS */
 
     /**
+     * Return the String representation of this email.
+     *
+     * @return the String representation of this email.
+     */
+    public String toString() {
+        return String.format("ID:%d\nFrom: <%s>\nSubject: %s\nDate: %s\nRead: %s\nBody: %s\n", id, sender, subject, date, read, body);
+    }
+
+    /**
      * Get the mail att.
+     *
      * @return the att of this email.
      */
-    public int getAtt(){
+    public int getAtt() {
         return this.att;
     }
 
     /**
      * Get the mail body.
+     *
      * @return the body of this email.
      */
-    public String getBody(){
+    public String getBody() {
         return this.body;
     }
 
     /**
+     * Set the body of the email.
+     *
+     * @param body the body of the Email.
+     */
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    /**
      * Get the mail content type.
+     *
      * @return the content type of this email.
      */
-    public String getContentType(){
+    public String getContentType() {
         return this.contentType;
     }
 
     /**
      * Get the mail date.
+     *
      * @return the date of this email.
      */
-    public String getDate(){
+    public String getDate() {
         return this.date;
     }
 
     /**
      * Get the mail excerpt.
+     *
      * @return the excerpt of this email.
      */
-    public String getExcerpt(){
+    public String getExcerpt() {
         return this.excerpt;
     }
 
     /**
      * Get the mail id.
+     *
      * @return the id of this email.
      */
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
     /**
      * Get the mail read.
+     *
      * @return the read of this email.
      */
-    public boolean getRead(){
+    public boolean getRead() {
         return this.read;
     }
 
     /**
      * Get the mail recipient.
+     *
      * @return the recipient of this email.
      */
-    public String getRecipient(){
+    public String getRecipient() {
         return this.recipient;
     }
 
     /**
      * Get the mail sender.
+     *
      * @return the sender of this email.
      */
-    public String getSender(){
+    public String getSender() {
         return this.sender;
     }
 
     /**
      * Get the mail source id.
+     *
      * @return the source id of this email.
      */
-    public int getSourceId(){
+    public int getSourceId() {
         return this.sourceId;
     }
 
     /**
      * Get the mail source mail id.
+     *
      * @return the source mail id of this email.
      */
-    public int getSourceMailId(){
+    public int getSourceMailId() {
         return this.sourceMailId;
-    }
-
-    /**
-     * Get the mail subject.
-     * @return the subject of this email.
-     */
-    public String getSubject(){
-        return this.subject;
-    }
-
-    /**
-     * Get the mail timestamp.
-     * @return the timestamp of this email.
-     */
-    public long getTimestamp(){
-        return this.timestamp;
     }
 
 
 	/* SET METHODS */
 
     /**
-     * Set the body of the email.
-     * @param body the body of the Email.
+     * Get the mail subject.
+     *
+     * @return the subject of this email.
      */
-    public void setBody(String body){
-        this.body = body;
+    public String getSubject() {
+        return this.subject;
     }
 
-    public static boolean fromIntToBoolean(int num){
-        return num != 0;
+    /**
+     * Get the mail timestamp.
+     *
+     * @return the timestamp of this email.
+     */
+    public long getTimestamp() {
+        return this.timestamp;
     }
 }
 

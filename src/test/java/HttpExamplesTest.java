@@ -1,5 +1,4 @@
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import core.TestBase;
 import org.testng.Assert;
@@ -9,7 +8,6 @@ import pages.FactoryRegistrationPage;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +17,7 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class HttpExamplesTest extends TestBase{
+public class HttpExamplesTest extends TestBase {
     @BeforeMethod
     public void setup() {
         open("broken_images", FactoryRegistrationPage.class);
@@ -44,7 +42,7 @@ public class HttpExamplesTest extends TestBase{
 
     private String mapToString(Map<String, String> map) {
         StringBuilder message = new StringBuilder();
-        for(String key : map.keySet()) {
+        for (String key : map.keySet()) {
             message.append(String.format("url: %s, response code: %s\n", key, map.get(key)));
         }
         return message.toString();

@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import core.TestBase;
 import helpers.mail.Email;
 import helpers.mail.GuerillaMail;
@@ -6,14 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.codeborne.selenide.Configuration;
 
-
-import java.util.List;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class EmailApiExampleTest extends TestBase {
     GuerillaMail mailer;
