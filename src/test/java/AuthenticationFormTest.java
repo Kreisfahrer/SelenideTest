@@ -20,8 +20,8 @@ public class AuthenticationFormTest extends TestBase {
     @Test(dataProvider = "loginData", dataProviderClass = DataProviders.class)
     public void authenticationTest(String login, String pswd, String errorMessage) {
         StaticRegistrationPage.login(login, pswd);
-        if ($(StaticRegistrationPage.FLASH_ERROR).isDisplayed()) {
-            Assert.assertEquals($(StaticRegistrationPage.FLASH_ERROR).getText(), errorMessage);
+        if ($(StaticRegistrationPage.FLASH).getText().length() != 0) {
+            Assert.assertTrue($(StaticRegistrationPage.FLASH).getText().contains(errorMessage));
         }
 
 

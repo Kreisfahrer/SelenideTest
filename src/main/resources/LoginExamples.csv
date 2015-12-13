@@ -1,6 +1,6 @@
-tomsmith,SuperSecretPassword!,NILL
+tomsmith,SuperSecretPassword!,You logged into a secure area!
 wrongLogin,SuperSecretPassword!,Your username is invalid!
 tomsmith,wrongPass,Your password is invalid!
-NILL,SuperSecretPassword!,Your username is invalid!
-tomsmith,NILL,Your password is invalid!
-NILL,NILL,Your username is invalid!
+ ,SuperSecretPassword!,Your username is invalid!
+tomsmith, ,Your password is invalid!
+ , ,Your username is invalid!

@@ -30,7 +30,7 @@ public class DataProviders {
         String[] spaceToEmpty = new String[values.length];
         for (int i = 0; i < values.length; i++) {
             String element = values[i];
-            if (element.equals("NILL")) {
+            if (element.equals(" ")) {
                 element = "";
             }
             spaceToEmpty[i] = element;
