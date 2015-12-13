@@ -30,7 +30,7 @@ public class StatusCodesTest extends BmpTestBase{
             $(getElement(StatusCodesPage.CODE_PAGE_LINKS, i)).click();
             Har har = server.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
-                if (entry.getResponse().getStatus() >= 400){
+                if (entry.getResponse().getStatus() >= 400) {
                     responseCode.put(entry.getRequest().getUrl(), String.valueOf(entry.getResponse().getStatus()));
                 }
             }
