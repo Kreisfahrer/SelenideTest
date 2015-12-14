@@ -4,11 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BrokenImageStaticPage;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static helpers.Helpers.getUrls;

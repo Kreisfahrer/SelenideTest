@@ -23,7 +23,7 @@ public class BrokenImageTest extends TestBase {
         for (int i = 0; i < imageSize; i++) {
             if (!$(BrokenImageStaticPage.IMAGE_LINK, i).isImage()) {
                 String url = $(BrokenImageStaticPage.IMAGE_LINK, i).attr(BrokenImageStaticPage.ATTRIBUTE);
-                brokenImage.put("\n" + url, " not loaded");
+                brokenImage.put("\n" + url + " ", " not loaded");
             }
         }
         Assert.assertEquals(brokenImage.size(), 0, brokenImage.toString());
