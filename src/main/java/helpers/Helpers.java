@@ -37,8 +37,8 @@ public class Helpers {
 
     public static List<String> getUrls(ElementsCollection elements, String attribute) {
         List<String> urls = new ArrayList<>();
-        for (SelenideElement image : elements) {
-            urls.add(image.attr(attribute));
+        for (SelenideElement url : elements) {
+            urls.add(url.attr(attribute));
         }
         return urls;
     }
