@@ -14,15 +14,12 @@ import static helpers.Locators.get;
 public class UploadFilePage {
     public final static By BROWSE_BUTTON = get("browseButton");
     public final static By UPLOAD_BUTTON = get("uploadButton");
-    public final static By FILE_UPLODED_MESSAGE = get("fileUploadedMessage");
-    public final static By UPLOADED_FILE_NAME = get("uploadedFileName");
-    private static final String UPLOAD_FILE_PATH = "./src/main/resources/uploadFileResources/smiley.jpg";
-    public static String fileName = new File(UPLOAD_FILE_PATH).getName();
+    public final static By FILE_UPLOADED_MESSAGE_HEADER = get("fileUploadedMessageHeader");
+    public final static By FILE_UPLODED_MESSAGE = get("fileUploadedMessageWithFileName");
 
-    @Step("User successfully uploaded the file")
-    public static void uploadFile() {
-        String absolutePath = new File(UPLOAD_FILE_PATH).getAbsolutePath();
-        $(BROWSE_BUTTON).uploadFile(new File(absolutePath));
+    @Step("User successfully uploaded the file {0}")
+    public static void uploadFile(String path) {
+        $(BROWSE_BUTTON).uploadFile(new File(path));
         $(UPLOAD_BUTTON).click();
     }
 }

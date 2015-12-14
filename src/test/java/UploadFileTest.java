@@ -19,15 +19,12 @@ public class UploadFileTest extends TestBase {
         open("upload");
     }
 
-    @Parameter("Uploaded File name")
-    private String uploadedFileName;
+    @Parameter("uploaded_file") private String UPLOAD_FILE_PATH = getClass().getResource("/uploadFileResources/smiley.jpg").getPath();
 
     @Test
-    public void uploadFileTest() {
-        UploadFilePage.uploadFile();
+    public void uploadFileTest() throws Exception {
+        UploadFilePage.uploadFile(UPLOAD_FILE_PATH);
         $(UploadFilePage.FILE_UPLODED_MESSAGE).should(appear);
-        $("h3").shouldHave(text("File Uploaded!"));
-        uploadedFileName = UploadFilePage.fileName;
-        $(UploadFilePage.UPLOADED_FILE_NAME).shouldHave(uploadedFileName);
+        $(UploadFilePage.FILE_UPLOADED_MESSAGE_HEADER).shouldHave(text("File Uploaded!"));
     }
 }
