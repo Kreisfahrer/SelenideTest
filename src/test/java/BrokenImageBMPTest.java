@@ -4,11 +4,15 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BrokenImageStaticPage;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.Helpers.getUrls;
 import static helpers.Helpers.mapToString;
-import static pages.BrokenImageStaticPage.loadAllArfuments;
 
 public class BrokenImageBMPTest extends BmpTestBase {
 
@@ -20,13 +24,17 @@ public class BrokenImageBMPTest extends BmpTestBase {
 
     @Test
     public void brokenImageTest() {
+        List<String> links = getUrls($$(BrokenImageStaticPage.IMAGE_LINK),
+                BrokenImageStaticPage.ATTRIBUTE);
         Har har = server.getHar();
         Map<String, String> brokenImage = new HashMap<>();
         for (HarEntry entry : har.getLog().getEntries()) {
-            for(String link : BrokenImageStaticPage.loadImageUrls()) {
-                if (entry.getRequest().getUrl().equals(link)) {
-                    if (entry.getResponse().getStatus() >= 400) {
-                        brokenImage.put(entry.getRequest().getUrl(), String.valueOf(entry.getResponse().getStatus()));
+            String url = entry.getRequest().getUrl();
+            for(String link : links) {
+                if (url.equals(link)) {
+                    int responseCode = entry.getResponse().getStatus();
+                    if (responseCode >= 400) {
+                        brokenImage.put(url, String.valueOf(responseCode));
                     }
                 }
             }
