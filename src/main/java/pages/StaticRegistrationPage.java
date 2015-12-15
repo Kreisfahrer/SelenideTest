@@ -11,6 +11,7 @@ public class StaticRegistrationPage {
     public final static By PASSWORD_FIELD = get("registerPage.passwordField");
     public final static By LOGIN_BUTTON = get("registerPage.loginButton");
     public final static By FLASH = get("registerPage.flash");
+    public final static By FLASH_ERROR = get("registerPage.flashError");
 
     @Step("Logging in with user: {0}, password: {1}.")
     public static void login(String user, String pass) {
