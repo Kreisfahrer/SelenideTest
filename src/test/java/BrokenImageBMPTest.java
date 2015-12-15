@@ -21,9 +21,8 @@ public class BrokenImageBMPTest extends BmpTestBase {
     }
 
     @Test
-    public void brokenImageTest() {
-        List<String> links = getUrls($$(BrokenImageStaticPage.IMAGE_LINK),
-                BrokenImageStaticPage.ATTRIBUTE);
+    public void brokenImageBMPTest() {
+        List<String> links = getUrls($$(BrokenImageStaticPage.IMAGE_LINK), "src");
         Har har = server.getHar();
         Map<String, String> brokenImage = new HashMap<>();
         for (HarEntry entry : har.getLog().getEntries()) {
