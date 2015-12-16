@@ -11,6 +11,7 @@ import static org.openqa.selenium.net.PortProber.findFreePort;
 
 public class BmpTestBase extends TestBase{
     protected ProxyServer server;
+
     @Override
     @BeforeTest
     public void configure() {
