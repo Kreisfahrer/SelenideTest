@@ -1,10 +1,11 @@
 import core.BmpTestBase;
-import net.lightbody.bmp.core.har.*;
-
-import net.lightbody.bmp.proxy.ProxyServer;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.StatusCodesPage;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +13,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class StatusCodesTest extends BmpTestBase{
 
-    private ProxyServer bmp;
-
     @BeforeMethod
     public void setup(){
         open("status_codes");
-        bmp = getServer();
     }
 
     @Test
@@ -25,9 +23,9 @@ public class StatusCodesTest extends BmpTestBase{
         int countLinks = $$(StatusCodesPage.CODE_PAGE_LINKS).size();
         Map<String, String> responseCode = new HashMap<>();
         for (int i = 0; i < countLinks; i++) {
-            bmp.newHar("the-internet");
+            server.newHar("the-internet");
             $(StatusCodesPage.CODE_PAGE_LINKS, i).click();
-            Har har = bmp.getHar();
+            Har har = server.getHar();
             for (HarEntry entry : har.getLog().getEntries()) {
                 if (entry.getResponse().getStatus() >= 400) {
                     responseCode.put(entry.getRequest().getUrl(), String.valueOf(entry.getResponse().getStatus()));
