@@ -1,9 +1,8 @@
-import com.codeborne.selenide.WebDriverRunner;
 import core.TestBase;
 import helpers.DataProviders;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AuthenticatedPage;
 import pages.StaticRegistrationPage;
 
 import static com.codeborne.selenide.Condition.*;
@@ -21,15 +20,13 @@ public class AuthenticationFormTest extends TestBase {
     @Test(dataProvider = "loginData", dataProviderClass = DataProviders.class)
     public void authenticationTest(String login, String pswd, String errorMessage) {
         StaticRegistrationPage.login(login, pswd);
-        if ($(StaticRegistrationPage.FLASH_ERROR).isDisplayed()) {
-            $(StaticRegistrationPage.FLASH_ERROR).should(appear,text(errorMessage));
+               if (!errorMessage.isEmpty()) {
+                                $(StaticRegistrationPage.FLASH_ERROR).should(appear, text(errorMessage));
+                    } else {
+                   $(AuthenticatedPage.FLASH_SUCCESS).should(appear,text("You logged into a secure area!"));
+                   AuthenticatedPage.logOut();
         }
 
     }
 
-    @AfterMethod
-    public void quite() {
-
-        WebDriverRunner.getWebDriver().quit();
-    }
 }
