@@ -1,4 +1,3 @@
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import core.TestBase;
 import org.openqa.selenium.Point;
@@ -6,15 +5,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
-
-import static pages.StaticFloatingMenuPage.MENU;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 import static pages.StaticFloatingMenuPage.CONTENT_PARAGRAPHS;
+import static pages.StaticFloatingMenuPage.MENU;
 
-public class FloatingMenuTest  extends TestBase{
+public class FloatingMenuTest  extends TestBase {
 
     @BeforeMethod
     public void setup() {
@@ -26,13 +22,11 @@ public class FloatingMenuTest  extends TestBase{
         $(MENU).shouldBe(visible);
         Point menuLocation = $(MENU).getLocation();
 
-        ElementsCollection paragraphs = $$(CONTENT_PARAGRAPHS);
-        for (SelenideElement paragraph : paragraphs) {
+        for (SelenideElement paragraph : $$(CONTENT_PARAGRAPHS)) {
             paragraph.scrollTo();
             Assert.assertNotSame($(MENU).getLocation(), menuLocation);
             menuLocation = $(MENU).getLocation();
             $(MENU).shouldBe(visible);
         }
     }
-
 }
