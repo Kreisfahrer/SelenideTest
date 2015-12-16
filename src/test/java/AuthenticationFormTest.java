@@ -21,15 +21,16 @@ public class AuthenticationFormTest extends TestBase {
     @Test(dataProvider = "loginData", dataProviderClass = DataProviders.class)
     public void authenticationTest(String login, String pswd, String errorMessage) {
         StaticRegistrationPage.login(login, pswd);
-        if ($(StaticRegistrationPage.FLASH_ERROR).isDisplayed()) {
-            $(StaticRegistrationPage.FLASH_ERROR).should(appear,text(errorMessage));
+        if (!errorMessage.isEmpty()) {
+            // verification for invalid creds and validation appearance
+            $(StaticRegistrationPage.FLASH_ERROR).should(appear, text(errorMessage));
+        } else {
+            // validation for successful login goes here
         }
-
     }
 
     @AfterMethod
     public void quite() {
-
         WebDriverRunner.getWebDriver().quit();
     }
 }
