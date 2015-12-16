@@ -1,6 +1,8 @@
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import core.TestBase;
+import org.openqa.selenium.Point;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -22,10 +24,13 @@ public class FloatingMenuTest  extends TestBase{
     @Test
     public void floatingMenuTest() throws InterruptedException {
         $(MENU).shouldBe(visible);
+        Point menuLocation = $(MENU).getLocation();
 
         ElementsCollection paragraphs = $$(CONTENT_PARAGRAPHS);
         for (SelenideElement paragraph : paragraphs) {
             paragraph.scrollTo();
+            Assert.assertNotSame($(MENU).getLocation(), menuLocation);
+            menuLocation = $(MENU).getLocation();
             $(MENU).shouldBe(visible);
         }
     }
