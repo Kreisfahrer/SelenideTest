@@ -16,14 +16,14 @@ public class BrokenImageBMPTest extends BmpTestBase {
 
     @BeforeMethod
     public void setup() {
-        getServer().newHar("broken-image");
+        server.newHar("broken-image");
         open("broken_images");
     }
 
     @Test
     public void brokenImageBMPTest() {
         List<String> links = getUrls($$(BrokenImageStaticPage.IMAGE_LINK), "src");
-        Har har = getServer().getHar();
+        Har har = server.getHar();
         Map<String, String> brokenImage = new HashMap<>();
         for (HarEntry entry : har.getLog().getEntries()) {
             String url = entry.getRequest().getUrl();
