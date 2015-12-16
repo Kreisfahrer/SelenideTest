@@ -41,4 +41,7 @@ public class BmpTestBase extends TestBase{
         saveEnvironment();
     }
 
+    public ProxyServer getServer() {
+        return server;
+    }
 }
