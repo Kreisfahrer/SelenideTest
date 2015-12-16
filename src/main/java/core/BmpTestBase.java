@@ -26,6 +26,7 @@ public class BmpTestBase extends TestBase{
             e.printStackTrace();
         }
         //Configuration.browser = WebDriverRunner.HTMLUNIT;
+
         getEnvironmentProperties();
     }
     @AfterTest
