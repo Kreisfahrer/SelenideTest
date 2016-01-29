@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
 import java.util.List;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -21,5 +20,10 @@ public class Helpers {
     @Attachment
     public static byte[] makeScreenshot() {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    }
+
+    @Attachment (value = "Test log")
+    public static String attachText(String text) {
+        return text;
     }
 }

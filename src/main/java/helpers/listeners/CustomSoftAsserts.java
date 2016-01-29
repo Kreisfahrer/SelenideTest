@@ -1,6 +1,6 @@
 package helpers.listeners;
 
-import com.codeborne.selenide.impl.SelenideLogger;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.selenide.testng.SoftAsserts;
 
 public class CustomSoftAsserts extends SoftAsserts {

@@ -9,12 +9,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Properties;
 
-import static com.codeborne.selenide.WebDriverRunner.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.isHtmlUnit;
 
+//@Listeners({CustomTextReport.class, ScreenShooter.class})
 public class TestBase {
     protected final static String DEFAULT_URL = "http://the-internet.herokuapp.com/";
     protected Properties environment;
@@ -34,7 +39,7 @@ public class TestBase {
             WebDriverRunner.setWebDriver(driver);
         }
 
-        Configuration.timeout = 10000;
+        Configuration.timeout = 0;
         Configuration.baseUrl = System.getProperty("baseUrl", DEFAULT_URL);
         //Configuration.browser = WebDriverRunner.HTMLUNIT;
         getEnvironmentProperties();

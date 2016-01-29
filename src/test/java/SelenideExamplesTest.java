@@ -1,6 +1,5 @@
 import core.TestBase;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.FactoryHomePage;
 import pages.FactoryRegistrationPage;
@@ -8,13 +7,12 @@ import pages.StaticHomePage;
 import pages.StaticRegistrationPage;
 import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
-import com.codeborne.selenide.testng.TextReport;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Condition.*;
 
-@Listeners(TextReport.class)
+//@Listeners(CustomTextReport.class)
 public class SelenideExamplesTest extends TestBase {
     private FactoryHomePage homePage;
     private FactoryRegistrationPage registrationPage;
