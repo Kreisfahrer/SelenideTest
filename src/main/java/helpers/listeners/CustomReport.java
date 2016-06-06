@@ -10,9 +10,7 @@ import helpers.Helpers;
 import java.util.Collections;
 import java.util.logging.Logger;
 
-/**
- * Created by andreystakhievich on 1/29/2016.
- */
+
 public class CustomReport extends SimpleReport {
     private static final Logger log = Logger.getLogger(SimpleReport.class.getName());
 

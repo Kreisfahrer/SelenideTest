@@ -3,10 +3,10 @@ package helpers.listeners;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.selenide.testng.SoftAsserts;
 
-public class CustomSoftAsserts extends SoftAsserts {
-    private final CustomErrorsCollector errorsCollector = new CustomErrorsCollector();
+ public class CustomSoftAsserts extends SoftAsserts {
+     private final CustomErrorsCollector errorsCollector = new CustomErrorsCollector();
 
-    public CustomSoftAsserts() {
-        SelenideLogger.addListener(this.errorsCollector);
-    }
-}
+     public CustomSoftAsserts() {
+         SelenideLogger.addListener(this.errorsCollector);
+     }
+ }

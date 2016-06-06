@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.testng.SoftAsserts;
+import com.codeborne.selenide.testng.TextReport;
 import core.TestBase;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +16,8 @@ import static com.codeborne.selenide.Selenide.open;
 /**
  * Created by Admin on 09.12.2015.
  */
-@Listeners(SoftAsserts.class)
+
+@Listeners({SoftAsserts.class})
 public class SoftAssertExample extends TestBase {
 
     @BeforeMethod

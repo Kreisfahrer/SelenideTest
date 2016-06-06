@@ -9,6 +9,6 @@ public class ScreenShooter extends ExitCodeListener {
     @Override
     public void onTestFailure(ITestResult result) {
         super.onTestFailure(result);
-        Helpers.makeScreenshot();
+        Helpers.takeScreenshot();
     }
 }

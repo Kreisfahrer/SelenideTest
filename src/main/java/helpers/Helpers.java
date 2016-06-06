@@ -18,7 +18,7 @@ public class Helpers {
     }
 
     @Attachment
-    public static byte[] makeScreenshot() {
+    public static byte[] takeScreenshot() {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 

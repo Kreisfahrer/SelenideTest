@@ -2,12 +2,15 @@ package core;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import helpers.listeners.CustomTextReport;
+import helpers.listeners.ScreenShooter;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,7 +22,7 @@ import java.util.Properties;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.isHtmlUnit;
 
-//@Listeners({CustomTextReport.class, ScreenShooter.class})
+@Listeners({CustomTextReport.class, ScreenShooter.class})
 public class TestBase {
     protected final static String DEFAULT_URL = "http://the-internet.herokuapp.com/";
     protected Properties environment;
