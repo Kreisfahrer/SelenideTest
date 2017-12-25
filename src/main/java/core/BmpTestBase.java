@@ -29,6 +29,7 @@ public class BmpTestBase extends TestBase{
 
         getEnvironmentProperties();
     }
+
     @AfterTest
        public void proxyShutDown() throws Exception {
         if (server != null) {
