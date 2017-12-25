@@ -15,11 +15,11 @@ public class UploadFilePage {
     public final static By BROWSE_BUTTON = get("browseButton");
     public final static By UPLOAD_BUTTON = get("uploadButton");
     public final static By FILE_UPLOADED_MESSAGE_HEADER = get("fileUploadedMessageHeader");
-<<<<<<< HEAD
+
     public final static By FILE_UPLOADED_MESSAGE = get("fileUploadedMessageWithFileName");
-=======
+
     public final static By FILE_UPLODED_MESSAGE = get("fileUploadedMessageWithFileName");
->>>>>>> origin/master
+
 
     @Step("User successfully uploaded the file {0}")
     public static void uploadFile(String path) {
