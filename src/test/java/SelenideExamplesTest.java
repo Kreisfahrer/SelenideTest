@@ -1,6 +1,4 @@
-import com.codeborne.selenide.testng.BrowserPerClass;
 import core.TestBase;
-import helpers.ScreenShooter;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
