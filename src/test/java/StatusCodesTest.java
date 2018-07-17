@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.Helpers.mapToString;
 
 public class StatusCodesTest extends BmpTestBase{
 
@@ -35,14 +36,4 @@ public class StatusCodesTest extends BmpTestBase{
         }
         Assert.assertEquals(responseCode.size(), 0, mapToString(responseCode));
     }
-
-    private String mapToString(Map<String, String> map) {
-        StringBuilder message = new StringBuilder();
-        for(String key : map.keySet()) {
-            message.append(String.format("\nurl: %s, response code: %s", key, map.get(key)));
-        }
-        message.append("\n");
-        return message.toString();
-    }
-
 }

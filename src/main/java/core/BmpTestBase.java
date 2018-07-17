@@ -3,7 +3,9 @@ package core;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import net.lightbody.bmp.proxy.ProxyServer;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 
@@ -14,7 +16,7 @@ public class BmpTestBase extends TestBase{
     protected ProxyServer server;
 
     @Override
-    @BeforeTest
+    @BeforeMethod
     public void configure() {
         Configuration.timeout = 10000;
         Configuration.baseUrl = System.getProperty("baseUrl", DEFAULT_URL);
@@ -39,6 +41,7 @@ public class BmpTestBase extends TestBase{
         WebDriverRunner.setProxy(null);
     }
 
+    @Override
     @AfterTest
     public void cleanup() {
         saveEnvironment();
